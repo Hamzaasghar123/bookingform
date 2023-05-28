@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thank you! Your booking has been submitted!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        h2 {
+            color: #007BFF;
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 40px;
+        }
+
+        li {
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        strong {
+            display: block;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        span {
+            font-size: 16px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-top: 30px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h2>Thank you! Your booking has been submitted!</h2>
+    <ul>
+        <li>
+            <strong>Event Name:</strong>
+            <span>{{ eventName }}</span>
+            <strong>Date:</strong>
+            <span>{{ eventDate }}</span>
+            <strong>Time:</strong>
+            <span>{{ eventTime }}</span>
+            <strong>Location:</strong>
+            <span>{{ eventLocation }}</span>
+            <strong>Booth:</strong>
+            <span>{{ boothSelect }}</span>
+            <strong>Additional Information:</strong>
+            <span>{{ additionalInfo }}</span>
+        </li>
+    </ul>
+    <p>Thank you for choosing our service. We look forward to seeing you at the event!</p>
+</body>
+</html>

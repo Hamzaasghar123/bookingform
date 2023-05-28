@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upcoming Bookings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #007BFF;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            background-color: #d0efff;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        .event-details {
+            margin-bottom: 10px;
+        }
+
+        .edit-form {
+            margin-top: 10px;
+        }
+
+        label {
+            margin-right: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+            border: none;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Upcoming Bookings</h2>
+    <ul>
+        {% for booking in upcoming_events reversed %}
+            <li>
+                <div class="event-details">
+                    <strong>Event Name:</strong> {{ booking.event.eventName }}<br>
+                    <strong>Date:</strong> {{ booking.event.eventDate }}<br>
+                    <strong>Time:</strong> {{ booking.event.eventTime }}<br>
+                    <strong>Location:</strong> {{ booking.event.eventLocation }}<br>
+                    <strong>Booth Selected:</strong> {{ booking.event.boothSelect }}<br>
+                    <strong>Customer Contact Number:</strong> {{ booking.customerContactNumber }}<br>
+                    <strong>Additional Information:</strong> {{ booking.event.additionalInfo }}
+                </div>
+                <div class="edit-form">
+                    <form action="{% url 'edit_booking' booking.event.id %}" method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" value="Assign Staff">
+                    </form>
+                </div>
+            </li>
+        {% empty %}
+            <li>No upcoming bookings.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

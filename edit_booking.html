@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #007BFF;
+        }
+
+        form {
+            margin-top: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 4px;
+            border: none;
+            margin-top: 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Edit Booking</h2>
+    <div class="event-details">
+        <strong>Event Name:</strong> {{ event.eventName }}<br>
+        <strong>Date:</strong> {{ event.eventDate }}<br>
+        <strong>Time:</strong> {{ event.eventTime }}<br>
+        <strong>Location:</strong> {{ event.eventLocation }}<br>
+        <strong>Booth Selected:</strong> {{ event.boothSelect }}<br>
+        <strong>Customer Contact Number:</strong> {{ event.contactNumber }}<br>
+        <strong>Additional Information:</strong> {{ event.additionalInfo }}
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <label for="staff">Staff:</label>
+        <select id="staff" name="staff">
+            <option value="">Select a staff member</option>
+            <option value="Staff Member 1">Staff Member 1</option>
+            <option value="Staff Member 2">Staff Member 2</option>
+            <option value="Staff Member 3">Staff Member 3</option>
+            <option value="Staff Member 4">Staff Member 4</option>
+            <option value="Staff Member 5">Staff Member 5</option>
+        </select>
+        <br>
+        <br>
+        <input type="submit" value="Save Changes">
+    </form>
+</body>
+</html>

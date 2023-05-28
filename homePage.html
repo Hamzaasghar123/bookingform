@@ -1,0 +1,117 @@
+<html>
+<head>
+    <title>Photobooth Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            background: #d0efff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+        input[type=submit] {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        input[type=submit]:hover {
+            background-color: #0056b3;
+        }
+
+        .admin-button {
+            position: fixed;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .staff-button {
+            position: fixed;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'admin_login' %}" class="admin-button">Admin Login</a>
+    <a href="{% url 'staff_login' %}" class="staff-button">Staff Login</a>
+    <h2>Photobooth Booking Form</h2>
+    <form action="{% url 'booking_submitted' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="eventName">Event Name:</label>
+        <input type="text" id="eventName" name="eventName">
+
+        <label for="eventDate">Date:</label>
+        <input type="date" id="eventDate" name="eventDate">
+
+        <label for="eventTime">Time:</label>
+        <input type="time" id="eventTime" name="eventTime">
+
+        <label for="eventLocation">Location:</label>
+        <input type="text" id="eventLocation" name="eventLocation">
+
+        <label for="boothSelect">Select a Booth:</label>
+        <select id="boothSelect" name="boothSelect">
+            <option value="Select a Booth">Select a Booth</option>
+            <option value="Rita">Rita</option>
+            <option value="Lola">Lola</option>
+            <option value="Ivy">Ivy</option>
+            <option value="Rose">Rose</option>
+            <option value="Boxfresh Booth">Boxfresh Booth</option>
+        </select>
+
+        <label for="customerContactNumber">Customer Contact Number:</label>
+        <input type="tel" id="customerContactNumber" name="customerContactNumber">
+
+        <label for="additionalInfo">Additional Information:</label>
+        <textarea id="additionalInfo" name="additionalInfo"></textarea>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
